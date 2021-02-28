@@ -83,19 +83,17 @@ void MaxValueIn(int arr[], const int n, int MaxValue)
 }
 void Sort(int arr[], const int n,int buff)
 {
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n - 1; i++) 
 	{
-		for (int j = 0; j < n; j++)
+		for (int j = 0; j < n - i - 1; j++) 
 		{
-			if (arr[j] > arr[j + 1])
+			if (arr[j] > arr[j + 1]) 
 			{
-				int buff = arr[j];
+				buff = arr[j];
 				arr[j] = arr[j + 1];
-				arr[j] = buff;
-
+				arr[j + 1] = buff;
 			}
 		}
-		
 	}
 }
 int main()
