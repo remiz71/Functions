@@ -46,40 +46,43 @@ void ShiftRight(int arr[], const int n, const int number_of_shifts)
 		arr[0] = buffer;
 	}
 }
-void ShiftSum(int arr[], const int n, int ShiftSumm)
+int ShiftSum(int arr[], const int n)
 {
+	int ShiftSumm = 0;
 	for (int i = 0; i < n; i++)
 	{
 		ShiftSumm += arr[i];
 	}
-	cout << "Сумма всех элементов массива: " << ShiftSumm << endl;
+	return ShiftSumm;
 }
-void ShiftAvg(int arr[], const int n, int Avg,int ShiftSumm)
+int ShiftAvg(int arr[], const int n)
 {
+	int ShiftSumm = 0;
 	for (int i = 0; i < n; i++)
 	{
 		ShiftSumm += arr[i];
 	}
-	cout << "Average value : " << ShiftSumm / n << endl;
+	int Avg = ShiftSumm / n;
+	return Avg;
 
 }
-void MinValueIn(int arr[], const int n, int MinValue)
+int MinValueIn(int arr[], const int n)
 {
-	MinValue = arr[0];
+	int MinValue = arr[0];
 	for (int i = 0; i < n; i++)
 	{
 		if (arr[i] < MinValue) MinValue = arr[i];
 	}
-	cout << "Min value is : " << MinValue << endl;
+	return MinValue;
 }
-void MaxValueIn(int arr[], const int n, int MaxValue)
+int MaxValueIn(int arr[], const int n)
 {
-	MaxValue = arr[0];
+	int MaxValue = arr[0];
 	for (int i = 0; i < n; i++)
 	{
 		if (arr[i] > MaxValue) MaxValue = arr[i];
 	}
-	cout << "Max value is : " << MaxValue << endl;
+	return MaxValue;
 }
 void Sort(int arr[], const int n,int buff)
 {
@@ -129,16 +132,16 @@ int main()
 		Print(arr, n);
 		break;
 	case 3: 
-		ShiftSum(arr, n, ShiftSumm);
+		cout << "Сумма элементов массива: " << ShiftSum(arr, n);
 		break;
 	case 4:
-		ShiftAvg(arr, n, Avg, ShiftSumm);
+		cout << "Среднее всех элементов массива: " << ShiftAvg(arr, n);
 		break;
 	case 5:
-		MinValueIn(arr, n, MinValue);
+		cout << "Минимальное значение " << MinValueIn(arr, n);
 		break;
 	case 6:
-		MaxValueIn(arr, n, MaxValue);
+		cout << "Максимальное значение " << MaxValueIn(arr, n);
 		break;
 	case 7:
 		Sort(arr, n, buff);
