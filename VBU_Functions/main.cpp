@@ -118,6 +118,7 @@ int main()
 	cout << "Type 4 to calculate the average value of array" << endl;
 	cout << "Type 5 to find min value of array" << endl;
 	cout << "Type 6 to find max value of array" << endl;
+	cout << "Type 7 to sorting the array from less value to biggest value" << endl;
 	cout << "Your choose: "; cin >> ChooseRes;
 	switch (ChooseRes)
 	{
