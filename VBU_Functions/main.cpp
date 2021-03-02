@@ -4,17 +4,16 @@ using namespace std;
 #define tab "\t"
 #define split "---------------------------------------------------"
 
-void FillRand(int arr[], const int n)
+void FillRand(int arr[], const int n,int minRand=1,int maxRand=300)
 {
-	//Заполняем массив случайными числами
+	//Г‡Г ГЇГ®Г«Г­ГїГҐГ¬ Г¬Г Г±Г±ГЁГў Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г·ГЁГ±Г«Г Г¬ГЁ
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand(); // генерирует псевдослучайное число от 0 до 32767
+		arr[i] = rand() % maxRand + minRand; /
 	}
 }
 void Print(int arr[], const int n)
 {
-	//выводим массив на экран
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << tab;
@@ -24,7 +23,7 @@ void Print(int arr[], const int n)
 }
 void ShiftLeft(int arr[], const int n, const int number_of_shifts)
 {
-	for (int i = 0; i < number_of_shifts; i++) //цикл сдвигает на number of shifts элементов
+	for (int i = 0; i < number_of_shifts; i++) 
 	{
 		int buffer = arr[0];
 		for (int j = 0; j < n; j++)
@@ -36,7 +35,7 @@ void ShiftLeft(int arr[], const int n, const int number_of_shifts)
 }
 void ShiftRight(int arr[], const int n, const int number_of_shifts)
 {
-	for (int i = 0; i < number_of_shifts; i++) //цикл сдвигает на number of shifts элементов
+	for (int i = 0; i < number_of_shifts; i++) 
 	{
 		int buffer = arr[4];
 		for (int j = n-1; j > 0; j--)
@@ -108,7 +107,6 @@ int main()
 	int arr[n];
 	FillRand(arr, n);
 	Print(arr, n);
-	//Сдвиг массива на заданное число элементов
 	int number_of_shifts;
 	int ShiftSumm=0, Avg=0,MinValue=0,MaxValue = 0,buff=0;
 	cout << "Enter the action with array: " << endl;
@@ -133,16 +131,16 @@ int main()
 		Print(arr, n);
 		break;
 	case 3: 
-		cout << "Сумма элементов массива: " << ShiftSum(arr, n);
+		cout << "Summ all values of array " << ShiftSum(arr, n);
 		break;
 	case 4:
-		cout << "Среднее всех элементов массива: " << ShiftAvg(arr, n);
+		cout << "Average value of all array's elements: " << ShiftAvg(arr, n);
 		break;
 	case 5:
-		cout << "Минимальное значение " << MinValueIn(arr, n);
+		cout << "Minimal value of array " << MinValueIn(arr, n);
 		break;
 	case 6:
-		cout << "Максимальное значение " << MaxValueIn(arr, n);
+		cout << " Maximum value of array " << MaxValueIn(arr, n);
 		break;
 	case 7:
 		Sort(arr, n, buff);
