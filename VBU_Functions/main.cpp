@@ -6,10 +6,9 @@ using namespace std;
 
 void FillRand(int arr[], const int n,int minRand=1,int maxRand=300)
 {
-	//Çàïîëíÿåì ìàññèâ ñëó÷àéíûìè ÷èñëàìè
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand() % maxRand + minRand; /
+		arr[i] = rand() % maxRand + minRand;
 	}
 }
 void Print(int arr[], const int n)
