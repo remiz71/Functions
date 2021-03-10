@@ -4,7 +4,7 @@ using namespace std;
 #define tab "\t"
 #define split "---------------------------------------------------"
 
-void FillRand(int arr[], const int n,int minRand=1,int maxRand=300)
+void FillRand(int arr[], const int n,int minRand=1,int maxRand=10)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -53,14 +53,9 @@ int ShiftSum(int arr[], const int n)
 	}
 	return ShiftSumm;
 }
-int ShiftAvg(int arr[], const int n)
+double ShiftAvg(int arr[], const int n)
 {
-	int ShiftSumm = 0;
-	for (int i = 0; i < n; i++)
-	{
-		ShiftSumm += arr[i];
-	}
-	int Avg = ShiftSumm / n;
+	double Avg = (double) ShiftSum(arr,n) / n;
 	return Avg;
 
 }
