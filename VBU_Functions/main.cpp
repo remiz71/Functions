@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 using namespace std;
 #define tab "\t"
@@ -95,7 +95,7 @@ void Sort(int arr[], const int n,int buff)
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	cout << " Hello Functions! " << endl;
+	cout << " Проверка русской кодировки " << endl;
 	const int n = 5;
 	int ChooseRes;
 	int arr[n];
