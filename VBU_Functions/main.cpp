@@ -27,7 +27,7 @@ double MaxValueIn(double arr[], const int n);
 void Sort(double arr[], const int n);
 void SortByChoise(double arr[], const int n);
 // float overloads
-void FillRand(float arr[], const int n, int minRand, int maxRand);
+void FillRand(float arr[], const int n, int minRand=0, int maxRand=100);
 void Print(float arr[], const int n);
 void ShiftLeft(float arr[], const int n, const int number_of_shifts);
 void ShiftRight(float arr[], const int n, const int number_of_shifts);
@@ -38,7 +38,7 @@ float ShiftAvg(float arr[], const int n);
 void SortByChoise(float arr[], const int n);
 void Sort(float arr[], const int n);
 // char overloads
-void FillRand(char arr[], const int n, int minRand, int maxRand);
+void FillRand(char arr[], const int n, int minRand=0, int maxRand=100);
 void Print(char arr[], const int n);
 void ShiftLeft(char arr[], const int n, const int number_of_shifts);
 void ShiftRight(char arr[], const int n, const int number_of_shifts);
@@ -91,7 +91,7 @@ int main()
 	cout << " Проверка русской кодировки " << endl;
 	const int n = 5;
 	int ChooseRes;
-	double arr[n];
+	char arr[n];
 	int C = 0;
 	FillRand(arr, n);
 	Print(arr, n);
@@ -254,12 +254,12 @@ int main()
 	//double overloaded functions
 	void FillRand(double arr[], const int n, int minRand, int maxRand)
 	{
-		minRand *= 100;
+		minRand *= 10;
 		maxRand *= 100;
 		for (int i = 0; i < n; i++)
 		{
-			arr[i] = rand() % (maxRand - minRand) + minRand;
-			arr[i] /= 100;
+			arr[i] = rand() % maxRand + minRand;
+		
 		}
 	}
 	void Print(double arr[], const int n)
