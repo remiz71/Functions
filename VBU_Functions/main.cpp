@@ -4,7 +4,12 @@
 using namespace std;
 #define tab "\t"
 #define split "---------------------------------------------------"
-
+//UnicRand
+void UnicRand(int arr[], const int n, int minRand=0, int maxRand=100);
+void UnicRand(float arr[], const int n, int minRand = 0, int maxRand = 100);
+void UnicRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
+void UnicRand(char arr[], const int n, int minRand = 0, int maxRand = 100);
+//End
 void FillRand(int arr[], const int n, int minRand=1, int maxRand=100);
 void Print(int arr[], const int n);
 void ShiftLeft(int arr[], const int n, const int number_of_shifts);
@@ -88,12 +93,13 @@ void Sort(char arr[], const int n);
 int main()
 {
 	setlocale(LC_ALL, "Russian");
+	srand(time(NULL));
 	cout << " Проверка русской кодировки " << endl;
 	const int n = 5;
 	int ChooseRes;
 	char arr[n];
 	int C = 0;
-	FillRand(arr, n);
+	UnicRand(arr, n);
 	Print(arr, n);
 	int number_of_shifts;
 	cout << "Enter the action with array: " << endl;
@@ -571,7 +577,31 @@ int main()
 		}
 	}
 // UnicRand function
-	void UnicRand(int arr[], const int n)
+	void UnicRand(int arr[], const int n, int minRand, int maxRand)
 	{
-
+		for (int i = 0; i < n; i++)
+		{
+			arr[i] = rand() % maxRand + minRand;
+		}
+	}
+	void UnicRand(double arr[], const int n, int minRand, int maxRand)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			arr[i] = rand() % maxRand + minRand;
+		}
+	}
+	void UnicRand(float arr[], const int n, int minRand, int maxRand)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			arr[i] = rand() % maxRand + minRand;
+		}
+	}
+	void UnicRand(char arr[], const int n, int minRand, int maxRand)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			arr[i] = rand() % maxRand + minRand;
+		}
 	}
