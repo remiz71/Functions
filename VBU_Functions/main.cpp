@@ -97,7 +97,7 @@ int main()
 	cout << " Проверка русской кодировки " << endl;
 	const int n = 5;
 	int ChooseRes;
-	char arr[n];
+	double arr[n];
 	int C = 0;
 	UnicRand(arr, n);
 	Print(arr, n);
@@ -472,12 +472,9 @@ int main()
 	// char overloaded functions
 	void FillRand(char arr[], const int n, int minRand, int maxRand)
 	{
-		minRand *= 100;
-		maxRand *= 100;
 		for (int i = 0; i < n; i++)
 		{
-			arr[i] = rand() % (maxRand - minRand) + minRand;
-			arr[i] /= 100;
+			arr[i] = rand() % 256;
 		}
 	}
 	void Print(char arr[], const int n)
@@ -586,16 +583,22 @@ int main()
 	}
 	void UnicRand(double arr[], const int n, int minRand, int maxRand)
 	{
+		minRand *= 100;
+		maxRand *= 100;
 		for (int i = 0; i < n; i++)
 		{
-			arr[i] = rand() % maxRand + minRand;
+			arr[i] = rand() % (maxRand - minRand) + minRand;
+			arr[i] /= 100;
 		}
 	}
 	void UnicRand(float arr[], const int n, int minRand, int maxRand)
 	{
+		minRand *= 100;
+		maxRand *= 100;
 		for (int i = 0; i < n; i++)
 		{
-			arr[i] = rand() % maxRand + minRand;
+			arr[i] = rand() % (maxRand - minRand) + minRand;
+			arr[i] /= 100;
 		}
 	}
 	void UnicRand(char arr[], const int n, int minRand, int maxRand)
