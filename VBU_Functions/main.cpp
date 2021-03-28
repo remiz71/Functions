@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include "Print.h"
 
 
 using namespace std;
@@ -12,7 +13,7 @@ void UnicRand(char arr[], const int n, int minRand=0, int maxRand=100);
 //End
 void FillRand(int arr[], const int n, int minRand=1, int maxRand=100);
 
-template<typename T> void Print(T arr[], const int n);
+
 template<typename T> void ShiftLeft(T arr[], const int n, const int number_of_shifts);
 template<typename T> void ShiftRight(T arr[], const int n, const int number_of_shifts);
 template<typename T> T ShiftSum(T arr[], const int n);
