@@ -6,53 +6,21 @@ using namespace std;
 #define split "---------------------------------------------------"
 //UnicRand
 void UnicRand(int arr[], const int n, int minRand=0, int maxRand=100);
-void UnicRand(float arr[], const int n, int minRand = 0, int maxRand = 100);
-void UnicRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
-void UnicRand(char arr[], const int n, int minRand = 0, int maxRand = 100);
+void UnicRand(double arr[], const int n, int minRand=0, int maxRand=100);
+void UnicRand(float arr[], const int n, int minRand=0, int maxRand=100);
+void UnicRand(char arr[], const int n, int minRand=0, int maxRand=100);
 //End
 void FillRand(int arr[], const int n, int minRand=1, int maxRand=100);
-void Print(int arr[], const int n);
-void ShiftLeft(int arr[], const int n, const int number_of_shifts);
-void ShiftRight(int arr[], const int n, const int number_of_shifts);
-int ShiftSum(int arr[], const int n);
-double ShiftAvg(int arr[], const int n);
-int MinValueIn(int arr[], const int n);
-int MaxValueIn(int arr[], const int n);
-void Sort(int arr[], const int n);
-void SortByChoise(int arr[], const int n);
-//double overloads
-void FillRand(double arr[], const int n, int minRand=1, int maxRand=100);
-void Print(double arr[], const int n);
-void ShiftLeft(double arr[], const int n, const int number_of_shifts);
-void ShiftRight(double arr[], const int n, const int number_of_shifts);
-double ShiftSum(double arr[], const int n);
-double ShiftAvg(double arr[], const int n);
-double MinValueIn(double arr[], const int n);
-double MaxValueIn(double arr[], const int n);
-void Sort(double arr[], const int n);
-void SortByChoise(double arr[], const int n);
-// float overloads
-void FillRand(float arr[], const int n, int minRand=0, int maxRand=100);
-void Print(float arr[], const int n);
-void ShiftLeft(float arr[], const int n, const int number_of_shifts);
-void ShiftRight(float arr[], const int n, const int number_of_shifts);
-float ShiftSum(float arr[], const int n);
-float MaxValueIn(float arr[], const int n);
-float MinValueIn(float arr[], const int n);
-float ShiftAvg(float arr[], const int n);
-void SortByChoise(float arr[], const int n);
-void Sort(float arr[], const int n);
-// char overloads
-void FillRand(char arr[], const int n, int minRand=0, int maxRand=100);
-void Print(char arr[], const int n);
-void ShiftLeft(char arr[], const int n, const int number_of_shifts);
-void ShiftRight(char arr[], const int n, const int number_of_shifts);
-char ShiftSum(char arr[], const int n);
-char MaxValueIn(char arr[], const int n);
-char MinValueIn(char arr[], const int n);
-char ShiftAvg(char arr[], const int n);
-void SortByChoise(char arr[], const int n);
-void Sort(char arr[], const int n);
+
+template<typename T> void Print(T arr[], const int n);
+template<typename T> void ShiftLeft(T arr[], const int n, const int number_of_shifts);
+template<typename T> void ShiftRight(T arr[], const int n, const int number_of_shifts);
+template<typename T> T ShiftSum(T arr[], const int n);
+template<typename T> double ShiftAvg(T arr[], const int n);
+template<typename T> T MinValueIn(T arr[], const int n);
+template<typename T> T MaxValueIn(T arr[], const int n);
+template<typename T> void Sort(T arr[], const int n);
+template<typename T> void SortByChoise(T arr[], const int n);
 
 
 
@@ -89,6 +57,18 @@ void Sort(char arr[], const int n);
 
 	*/
 
+/*Шаблоны функций (Functions templates) - 
+Принимает любые параметры значений.
+Шаблон нужно создать :
+template <typename T> - 
+template показывает создание шаблона
+typename - определяет имя шаблонного типа
+T - имя шаблонного типа
+ 
+ Шаблон , созданный перед прототипом функции, действует до ; после прототипа функции
+ Если перед реализацией функции - то он существует до закрывающей фигурной скобки этой функции
+После того как мы сделали функцию шаблонной, то есть создали перед ней шаблон, любой принимаемый параметр и любая локальная переменная этой функции могут быть шаблонного типа (Т)
+ */
 
 int main()
 {
@@ -162,7 +142,7 @@ int main()
 			arr[i] = rand() % (maxRand - minRand) + minRand;
 		}
 	}
-	void Print(int arr[], const int n)
+	template<typename T> void Print(T arr[], const int n)
 	{
 		for (int i = 0; i < n; i++)
 		{
@@ -171,11 +151,11 @@ int main()
 		cout << endl;
 
 	}
-	void ShiftLeft(int arr[], const int n, const int number_of_shifts)
+	template<typename T> void ShiftLeft(T arr[], const int n, const int number_of_shifts)
 	{
 		for (int i = 0; i < number_of_shifts; i++)
 		{
-			int buffer = arr[0];
+			T buffer = arr[0];
 			for (int j = 0; j < n; j++)
 			{
 				arr[j] = arr[j + 1];
@@ -183,11 +163,11 @@ int main()
 			arr[n - 1] = buffer;
 		}
 	}
-	void ShiftRight(int arr[], const int n, const int number_of_shifts)
+	template<typename T> void ShiftRight(T arr[], const int n, const int number_of_shifts)
 	{
 		for (int i = 0; i < number_of_shifts; i++)
 		{
-			int buffer = arr[4];
+			T buffer = arr[4];
 			for (int j = n - 1; j > 0; j--)
 			{
 				arr[j] = arr[j - 1];
@@ -195,38 +175,38 @@ int main()
 			arr[0] = buffer;
 		}
 	}
-	int ShiftSum(int arr[], const int n)
+	template<typename T> T ShiftSum(T arr[], const int n)
 	{
-		int ShiftSumm = 0;
+		T ShiftSumm = 0;
 		for (int i = 0; i < n; i++)
 		{
 			ShiftSumm += arr[i];
 		}
 		return ShiftSumm;
 	}
-	double ShiftAvg(int arr[], const int n)
+	template<typename T> double ShiftAvg(T arr[], const int n)
 	{
 		return (double)ShiftSum(arr, n) / n;
 	}
-	int MinValueIn(int arr[], const int n)
+	template<typename T> T MinValueIn(T arr[], const int n)
 	{
-		int MinValue = arr[0];
+		T MinValue = arr[0];
 		for (int i = 0; i < n; i++)
 		{
 			if (arr[i] < MinValue) MinValue = arr[i];
 		}
 		return MinValue;
 	}
-	int MaxValueIn(int arr[], const int n)
+	template<typename T> T MaxValueIn(T arr[], const int n)
 	{
-		int MaxValue = arr[0];
+		T MaxValue = arr[0];
 		for (int i = 0; i < n; i++)
 		{
 			if (arr[i] > MaxValue) MaxValue = arr[i];
 		}
 		return MaxValue;
 	}
-	void Sort(int arr[], const int n)
+	template<typename T> void Sort(T arr[], const int n)
 	{
 		for (int i = 0; i < n - 1; i++)
 		{
@@ -234,14 +214,14 @@ int main()
 			{
 				if (arr[j] > arr[j + 1])
 				{
-					int buff = arr[j];
+					T buff = arr[j];
 					arr[j] = arr[j + 1];
 					arr[j + 1] = buff;
 				}
 			}
 		}
 	}
-	void SortByChoise(int arr[], const int n)
+	template<typename T> void SortByChoise(T arr[], const int n)
 	{
 		for (int i = 0; i < n; i++)
 		{
@@ -249,7 +229,7 @@ int main()
 			{
 				if (arr[j] < arr[i])
 				{
-					int buff = arr[i];
+					T buff = arr[i];
 					arr[i] = arr[j];
 					arr[j] = buff;
 				}
@@ -257,328 +237,11 @@ int main()
 		}
 
 	}
-	//double overloaded functions
-	void FillRand(double arr[], const int n, int minRand, int maxRand)
-	{
-		minRand *= 10;
-		maxRand *= 100;
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % maxRand + minRand;
-		
-		}
-	}
-	void Print(double arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			cout << arr[i] << tab;
-		}
-		cout << endl;
-
-	}
-	void ShiftLeft(double arr[], const int n, const int number_of_shifts)
-	{
-		for (int i = 0; i < number_of_shifts; i++)
-		{
-			double buffer = arr[0];
-			for (int j = 0; j < n; j++)
-			{
-				arr[j] = arr[j + 1];
-			}
-			arr[n - 1] = buffer;
-		}
-	}
-	void ShiftRight(double arr[], const int n, const int number_of_shifts)
-	{
-		for (int i = 0; i < number_of_shifts; i++)
-		{
-			double buffer = arr[4];
-			for (int j = n - 1; j > 0; j--)
-			{
-				arr[j] = arr[j - 1];
-			}
-			arr[0] = buffer;
-		}
-	}
-	double ShiftSum(double arr[], const int n)
-	{
-		double ShiftSumm = 0;
-		for (int i = 0; i < n; i++)
-		{
-			ShiftSumm += arr[i];
-		}
-		return ShiftSumm;
-	}
-	double MaxValueIn(double arr[], const int n)
-	{
-		double MaxValue = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] > MaxValue) MaxValue = arr[i];
-		}
-		return MaxValue;
-	}
-	double MinValueIn(double arr[], const int n)
-	{
-		double MinValue = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] < MinValue) MinValue = arr[i];
-		}
-		return MinValue;
-	}
-	double ShiftAvg(double arr[], const int n)
-	{
-		return (double)ShiftSum(arr, n) / n;
-	}
-	void SortByChoise(double arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = i + 1; j < n; j++)
-			{
-				if (arr[j] < arr[i])
-				{
-					double buff = arr[i];
-					arr[i] = arr[j];
-					arr[j] = buff;
-				}
-			}
-		}
-
-	}
-	void Sort(double arr[], const int n)
-	{
-		for (int i = 0; i < n - 1; i++)
-		{
-			for (int j = 0; j < n - i - 1; j++)
-			{
-				if (arr[j] > arr[j + 1])
-				{
-					double buff = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = buff;
-				}
-			}
-		}
-	}
-	// float overloaded functions
-	void FillRand(float arr[], const int n, int minRand, int maxRand)
-	{
-		minRand *= 100;
-		maxRand *= 100;
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % (maxRand - minRand) + minRand;
-			arr[i] /= 100;
-		}
-	}
-	void Print(float arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			cout << arr[i] << tab;
-		}
-		cout << endl;
-
-	}
-	void ShiftLeft(float arr[], const int n, const int number_of_shifts)
-	{
-		for (int i = 0; i < number_of_shifts; i++)
-		{
-			float buffer = arr[0];
-			for (int j = 0; j < n; j++)
-			{
-				arr[j] = arr[j + 1];
-			}
-			arr[n - 1] = buffer;
-		}
-	}
-	void ShiftRight(float arr[], const int n, const int number_of_shifts)
-	{
-		for (int i = 0; i < number_of_shifts; i++)
-		{
-			float buffer = arr[4];
-			for (int j = n - 1; j > 0; j--)
-			{
-				arr[j] = arr[j - 1];
-			}
-			arr[0] = buffer;
-		}
-	}
-	float ShiftSum(float arr[], const int n)
-	{
-		float ShiftSumm = 0;
-		for (int i = 0; i < n; i++)
-		{
-			ShiftSumm += arr[i];
-		}
-		return ShiftSumm;
-	}
-	float MaxValueIn(float arr[], const int n)
-	{
-		float MaxValue = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] > MaxValue) MaxValue = arr[i];
-		}
-		return MaxValue;
-	}
-	float MinValueIn(float arr[], const int n)
-	{
-		float MinValue = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] < MinValue) MinValue = arr[i];
-		}
-		return MinValue;
-	}
-	float ShiftAvg(float arr[], const int n)
-	{
-		return (float)ShiftSum(arr, n) / n;
-	}
-	void SortByChoise(float arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = i + 1; j < n; j++)
-			{
-				if (arr[j] < arr[i])
-				{
-					float buff = arr[i];
-					arr[i] = arr[j];
-					arr[j] = buff;
-				}
-			}
-		}
-
-	}
-	void Sort(float arr[], const int n)
-	{
-		for (int i = 0; i < n - 1; i++)
-		{
-			for (int j = 0; j < n - i - 1; j++)
-			{
-				if (arr[j] > arr[j + 1])
-				{
-					float buff = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = buff;
-				}
-			}
-		}
-	}
-	// char overloaded functions
-	void FillRand(char arr[], const int n, int minRand, int maxRand)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % 256;
-		}
-	}
-	void Print(char arr[], const int n)
-
-	{
-		for (int i = 0; i < n; i++)
-		{
-			cout << arr[i] << tab;
-		}
-		cout << endl;
-
-	}
-	void ShiftLeft(char arr[], const int n, const int number_of_shifts)
-	{
-		for (int i = 0; i < number_of_shifts; i++)
-		{
-			char buffer = arr[0];
-			for (int j = 0; j < n; j++)
-			{
-				arr[j] = arr[j + 1];
-			}
-			arr[n - 1] = buffer;
-		}
-	}
-	void ShiftRight(char arr[], const int n, const int number_of_shifts)
-	{
-		for (int i = 0; i < number_of_shifts; i++)
-		{
-			char buffer = arr[4];
-			for (int j = n - 1; j > 0; j--)
-			{
-				arr[j] = arr[j - 1];
-			}
-			arr[0] = buffer;
-		}
-	}
-	char ShiftSum(char arr[], const int n)
-	{
-		char ShiftSumm = 0;
-		for (int i = 0; i < n; i++)
-		{
-			ShiftSumm += arr[i];
-		}
-		return ShiftSumm;
-	}
-	char MaxValueIn(char arr[], const int n)
-	{
-		char MaxValue = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] > MaxValue) MaxValue = arr[i];
-		}
-		return MaxValue;
-	}
-	char MinValueIn(char arr[], const int n)
-	{
-		char MinValue = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] < MinValue) MinValue = arr[i];
-		}
-		return MinValue;
-	}
-	char ShiftAvg(char arr[], const int n)
-	{
-		return (char)ShiftSum(arr, n) / n;
-	}
-	void SortByChoise(char arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = i + 1; j < n; j++)
-			{
-				if (arr[j] < arr[i])
-				{
-					char buff = arr[i];
-					arr[i] = arr[j];
-					arr[j] = buff;
-				}
-			}
-		}
-
-	}
-	void Sort(char arr[], const int n)
-	{
-		for (int i = 0; i < n - 1; i++)
-		{
-			for (int j = 0; j < n - i - 1; j++)
-			{
-				if (arr[j] > arr[j + 1])
-				{
-					char buff = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = buff;
-				}
-			}
-		}
-	}
-// UnicRand function
 	void UnicRand(int arr[], const int n, int minRand, int maxRand)
 	{
 		for (int i = 0; i < n; i++)
 		{
-			arr[i] = rand() % maxRand + minRand;
+			arr[i] = rand() % (maxRand - minRand) + minRand;
 		}
 	}
 	void UnicRand(double arr[], const int n, int minRand, int maxRand)
@@ -603,8 +266,12 @@ int main()
 	}
 	void UnicRand(char arr[], const int n, int minRand, int maxRand)
 	{
+		minRand *= 100;
+		maxRand *= 100;
 		for (int i = 0; i < n; i++)
 		{
-			arr[i] = rand() % maxRand + minRand;
+			arr[i] = rand() % (maxRand - minRand) + minRand;
+			arr[i] /= 100;
 		}
 	}
+	
