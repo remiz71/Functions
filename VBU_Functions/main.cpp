@@ -1,27 +1,15 @@
-﻿#include <iostream>
+﻿
 #include "Print.h"
+#include "Print.cpp"
+#include "FillRand.h"
+#include "shifts.h"
+#include "shifts.cpp"
+#include "Sorting.h"
+#include "Sorting.cpp"
+#include "Stats.h"
+#include "Stats.cpp"
+#include "UnicRand.h"
 
-
-using namespace std;
-#define tab "\t"
-#define split "---------------------------------------------------"
-//UnicRand
-void UnicRand(int arr[], const int n, int minRand=0, int maxRand=100);
-void UnicRand(double arr[], const int n, int minRand=0, int maxRand=100);
-void UnicRand(float arr[], const int n, int minRand=0, int maxRand=100);
-void UnicRand(char arr[], const int n, int minRand=0, int maxRand=100);
-//End
-void FillRand(int arr[], const int n, int minRand=1, int maxRand=100);
-
-
-template<typename T> void ShiftLeft(T arr[], const int n, const int number_of_shifts);
-template<typename T> void ShiftRight(T arr[], const int n, const int number_of_shifts);
-template<typename T> T ShiftSum(T arr[], const int n);
-template<typename T> double ShiftAvg(T arr[], const int n);
-template<typename T> T MinValueIn(T arr[], const int n);
-template<typename T> T MaxValueIn(T arr[], const int n);
-template<typename T> void Sort(T arr[], const int n);
-template<typename T> void SortByChoise(T arr[], const int n);
 
 
 
@@ -136,143 +124,8 @@ int main()
 	default: cout << "Error" << endl;
 	}
 }
-	void FillRand(int arr[], const int n, int minRand, int maxRand)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % (maxRand - minRand) + minRand;
-		}
-	}
-	template<typename T> void Print(T arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			cout << arr[i] << tab;
-		}
-		cout << endl;
-
-	}
-	template<typename T> void ShiftLeft(T arr[], const int n, const int number_of_shifts)
-	{
-		for (int i = 0; i < number_of_shifts; i++)
-		{
-			T buffer = arr[0];
-			for (int j = 0; j < n; j++)
-			{
-				arr[j] = arr[j + 1];
-			}
-			arr[n - 1] = buffer;
-		}
-	}
-	template<typename T> void ShiftRight(T arr[], const int n, const int number_of_shifts)
-	{
-		for (int i = 0; i < number_of_shifts; i++)
-		{
-			T buffer = arr[4];
-			for (int j = n - 1; j > 0; j--)
-			{
-				arr[j] = arr[j - 1];
-			}
-			arr[0] = buffer;
-		}
-	}
-	template<typename T> T ShiftSum(T arr[], const int n)
-	{
-		T ShiftSumm = 0;
-		for (int i = 0; i < n; i++)
-		{
-			ShiftSumm += arr[i];
-		}
-		return ShiftSumm;
-	}
-	template<typename T> double ShiftAvg(T arr[], const int n)
-	{
-		return (double)ShiftSum(arr, n) / n;
-	}
-	template<typename T> T MinValueIn(T arr[], const int n)
-	{
-		T MinValue = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] < MinValue) MinValue = arr[i];
-		}
-		return MinValue;
-	}
-	template<typename T> T MaxValueIn(T arr[], const int n)
-	{
-		T MaxValue = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] > MaxValue) MaxValue = arr[i];
-		}
-		return MaxValue;
-	}
-	template<typename T> void Sort(T arr[], const int n)
-	{
-		for (int i = 0; i < n - 1; i++)
-		{
-			for (int j = 0; j < n - i - 1; j++)
-			{
-				if (arr[j] > arr[j + 1])
-				{
-					T buff = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = buff;
-				}
-			}
-		}
-	}
-	template<typename T> void SortByChoise(T arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = i+1; j < n; j++)
-			{
-				if (arr[j] < arr[i])
-				{
-					T buff = arr[i];
-					arr[i] = arr[j];
-					arr[j] = buff;
-				}
-			}
-		}
-
-	}
-	void UnicRand(int arr[], const int n, int minRand, int maxRand)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % (maxRand - minRand) + minRand;
-		}
-	}
-	void UnicRand(double arr[], const int n, int minRand, int maxRand)
-	{
-		minRand *= 100;
-		maxRand *= 100;
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % (maxRand - minRand) + minRand;
-			arr[i] /= 100;
-		}
-	}
-	void UnicRand(float arr[], const int n, int minRand, int maxRand)
-	{
-		minRand *= 100;
-		maxRand *= 100;
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % (maxRand - minRand) + minRand;
-			arr[i] /= 100;
-		}
-	}
-	void UnicRand(char arr[], const int n, int minRand, int maxRand)
-	{
-		minRand *= 100;
-		maxRand *= 100;
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % (maxRand - minRand) + minRand;
-			arr[i] /= 100;
-		}
-	}
+	
+	
+	
+	
 	

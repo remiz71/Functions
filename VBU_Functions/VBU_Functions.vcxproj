@@ -140,9 +140,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FillRand.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Print.cpp" />
+    <ClCompile Include="shifts.cpp" />
+    <ClCompile Include="Sorting.cpp" />
+    <ClCompile Include="Stats.cpp" />
+    <ClCompile Include="UnicRand.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FillRand.h" />
+    <ClInclude Include="shifts.h" />
+    <ClInclude Include="Sorting.h" />
+    <ClInclude Include="Stats.h" />
+    <ClInclude Include="UnicRand.h" />
     <ClInclude Include="Print.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
